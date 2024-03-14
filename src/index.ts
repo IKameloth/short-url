@@ -8,13 +8,8 @@ import connectDB from "./config/dbConfig"
 dotenv.config()
 connectDB()
 
-const corsOptions = {
-  origin: `http://localhost:${process.env.PORT}`,
-  credentials: true
-}
-
 const app = express()
-app.use(cors(corsOptions))
+app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({
   extended: true

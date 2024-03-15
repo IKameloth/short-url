@@ -4,7 +4,7 @@ import { createShortUrl, getByFullUrl, getUrlById, getUrls, removeShortUrl } fro
 export const getAllUrl = async(req: express.Request, res: express.Response) => {
   try {
     const allUrl = await getUrls()
-    if (allUrl.length <= 0) return res.status(404).send({ message: "Short urls not found!" })
+    if (allUrl.length <= 0) return res.status(200).send([])
 
     return res.status(200).send(allUrl)
   } catch (error) {

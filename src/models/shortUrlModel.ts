@@ -31,8 +31,8 @@ export const ShortUrlModel = mongoose.model('ShortUrl', ShortUrlSchema)
 
 // ACTIONS
 export const getUrls = () => ShortUrlModel.find()
-export const getByFullUrl = (fullUrl: string) => ShortUrlModel.find({ fullUrl })
-export const getUrlById = (idUrl: string) => ShortUrlModel.findOne({ _id: idUrl })
+export const getByFullUrl = (fullUrl: string) => ShortUrlModel.find({ fullUrl }).sort('created_at')
+export const getUrlById = (idUrl: string) => ShortUrlModel.findOne({ shortUrl: idUrl })
 export const createShortUrl = (fullUrl: string) => ShortUrlModel.create({ fullUrl })
 export const removeShortUrl = (idUrl: string) => ShortUrlModel.findOneAndDelete({ _id: idUrl })
 export const updateShortUrl = (idUrl: string, values: Record<string, any>) => ShortUrlModel.findByIdAndUpdate(

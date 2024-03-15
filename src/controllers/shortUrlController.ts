@@ -23,7 +23,7 @@ export const getUrl = async(req: express.Request, res: express.Response) => {
     shortUrl.clicks++
     await shortUrl.save()
 
-    res.status(200).send(`${shortUrl.fullUrl}`)
+    res.status(200).redirect(`${shortUrl.fullUrl}`)
   } catch (error) {
     console.log('short url controller error: ', error)
     return res.status(500).send({ message: "Something went wrong!" })
